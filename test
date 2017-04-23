@@ -1,0 +1,13 @@
+var Promise = require('bluebird');
+var result = 0;
+Promise.each([1, 2, 3], function (item) {
+    return new Promise(function (resolve) {
+        setTimeout(function () {
+            console.log('resolve item: ' + result);
+            result += 2;
+            resolve(66);
+        }, 1000 + Math.random() * 1000);
+    }).then(function (data) {
+        console.log(data);
+    })
+});
